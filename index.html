@@ -31,32 +31,38 @@
         </section>
 
         <section class="gallery-container">
-            <img src="images/1.jpg" onclick="onImgSelect(1)" alt="meme template 1" class="gallery-img">
-            <img src="images/2.jpg" onclick="onImgSelect(2)" alt="meme template 2" class="gallery-img">
+            <!-- <img src="images/1.jpg" onclick="onSelectImg(this)" data-img-id="1" alt="meme template 1" class="gallery-img">
+            <img src="images/2.jpg" onclick="onSelectImg(this)" data-img-id="2" alt="meme template 2" class="gallery-img"> -->
         </section>
     </main>
 
-    <section class="editor-container hidden">
+    <section class="editor-container">
         <main>
             <canvas height="400" width="400" class="editor-canvas"> </canvas>
             <section class="editor-toolbar">
-                <input type="text" class="text-input" ....>
+                <input type="text" class="text-input" placeholder="Enter your text here..." oninput="onTextInput(this.value)">
                 <div class="input-editors-container">
                     <button></button>
                     <button></button>
                     <button></button>
                 </div>
-<!-- 
+
                 <div class="font-editors-container">
                     <button></button>
                     <button></button>
                     <button></button>
-                </div> -->
+                </div>
             </section>
         </main>
     </section>
 
 </body>
-<script src="js/main.js"></script>
 
+<script src="js/services/util.service.js"></script>
+<script src="js/services/storage.service.js"></script>
+<script src="js/services/meme.service.js"></script>
+<script src="js/services/gallery.service.js"></script>
+
+<script src="js/galleryController.js"></script>
+<script src="js/memeController.js"></script>
 </html>
