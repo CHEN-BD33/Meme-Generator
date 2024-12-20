@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Meme Generator</title>
+</head>
+
+<body class="main-layout" onload="onInit()">
+
+    <!-- <div onclick="toggleMenu()" class="main-screen"></div> -->
+
+    <header class="main-header flex align-center space-between">
+        <div class="logo">Meme Generator</div>
+        <nav class="main-nav">
+            <ul class="flex clean-list">
+                <li><button class="gallery-li" onclick="onInit()">Gallery</button></li>
+                <li><button class="saved-li" onclick="onSaved()">Saved</button></li>
+            </ul>
+        </nav>
+        <!-- <button onclick="toggleMenu()" type="button" class="btn-menu">☰</button> -->
+    </header>
+
+
+    <main class="main-container">
+
+        <section class="search-bar">
+            <input type="text" class="meme-search" placeholder="Search" oninput="OnSearchMeme()">
+        </section>
+
+        <section class="gallery-container">
+            <img src="images/1.jpg" onclick="onImgSelect(1)" alt="meme template 1" class="gallery-img">
+            <img src="images/2.jpg" onclick="onImgSelect(2)" alt="meme template 2" class="gallery-img">
+        </section>
+    </main>
+
+    <section class="editor-container hidden">
+        <main>
+            <canvas height="400" width="400" class="editor-canvas"> </canvas>
+            <section class="editor-toolbar">
+                <input type="text" class="text-input" ....>
+                <div class="input-editors-container">
+                    <button></button>
+                    <button></button>
+                    <button></button>
+                </div>
+<!-- 
+                <div class="font-editors-container">
+                    <button></button>
+                    <button></button>
+                    <button></button>
+                </div> -->
+            </section>
+        </main>
+    </section>
+
+</body>
+<script src="js/main.js"></script>
+
+</html>
