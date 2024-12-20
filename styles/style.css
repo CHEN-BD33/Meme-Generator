@@ -12,6 +12,7 @@
 @import url('/styles/components/logo.css');
 @import url('/styles/components/main-nav.css');
 @import url('/styles/components/main-screen.css');
+@import url('/styles/components/gallery.css');
 
 /* MQ */
 @import url('/styles/setup/mq.css');
