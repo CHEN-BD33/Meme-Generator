@@ -13,7 +13,7 @@ function onInit() {
         resizeCanvas()
         coverCanvasWithImg(document.querySelector('img'))
     })
-    
+
     renderMeme()
 }
 
@@ -63,5 +63,22 @@ function drawText(line, idx) {
 
 function onTextInput(txt) {
     setLineTxt(txt)
+    renderMeme()
+}
+
+function downloadCanvas(elLink) {
+    const dataUrl = gElCanvas.toDataURL()
+
+    elLink.href = dataUrl
+    elLink.download = 'Meme'
+}
+
+function onColorChange(color) {
+    setLineColor(color)
+    renderMeme()
+}
+
+function onFontSize(diff){
+    setFontSize(diff)
     renderMeme()
 }

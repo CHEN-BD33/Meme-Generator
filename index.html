@@ -40,20 +40,22 @@
         <main>
             <canvas height="400" width="400" class="editor-canvas"> </canvas>
             <section class="editor-toolbar">
-                <input type="text" class="text-input" placeholder="Enter your text here..." oninput="onTextInput(this.value)">
+                <input type="text" class="text-input" placeholder="Enter your text here..."
+                    oninput="onTextInput(this.value)">
                 <div class="input-editors-container">
-                    <button></button>
-                    <button></button>
-                    <button></button>
                 </div>
-
+                
                 <div class="font-editors-container">
-                    <button></button>
-                    <button></button>
-                    <button></button>
+                    <button onclick="onFontSize('+')">A+</button>
+                    <button onclick="onFontSize('-')">A-</button>
+                    
+                    <input type="color" class="color-input" oninput="onColorChange(this.value)" value="#ffffff"
+                        title="Choose text color">
+              
                 </div>
             </section>
         </main>
+        <a href="#" onclick="downloadCanvas(this)" download="file-name">Download</a>
     </section>
 
 </body>
@@ -65,4 +67,5 @@
 
 <script src="js/galleryController.js"></script>
 <script src="js/memeController.js"></script>
+
 </html>

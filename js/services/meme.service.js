@@ -25,3 +25,15 @@ function setImg(imgId) {
 function setLineTxt(txt) {
     gMeme.lines[gMeme.selectedLineIdx].txt = txt
 }
+
+function setLineColor(color) {
+    gMeme.lines[gMeme.selectedLineIdx].color = color
+}
+
+function setFontSize(diff) {
+const line = gMeme.lines[gMeme.selectedLineIdx]
+
+if(diff=== '+') line.size +=2
+else if (diff === '-') line.size = Math.max(10, line.size - 2)
+    
+}
