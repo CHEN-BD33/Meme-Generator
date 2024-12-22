@@ -134,6 +134,11 @@ function onFontSize(diff) {
 
 function onAddLine(txt) {
     addLine(txt)
+
+    const elTextInput = document.querySelector('.text-input')
+    elTextInput.value = gMeme.lines[gMeme.selectedLineIdx].txt
+    elTextInput.focus()
+    
     renderMeme()
 }
 
