@@ -42,16 +42,17 @@
             <section class="editor-toolbar">
                 <input type="text" class="text-input" placeholder="Enter your text here..."
                     oninput="onTextInput(this.value)">
-                <div class="input-editors-container">
+
+                <div class="line-controls-container">
+                    <button onclick="onAddLine()" class="add-line-btn">+</button>
+                    <button onclick="onSwitchLine()" class="switch-lines-btn">↑↓</button>
                 </div>
-                
-                <div class="font-editors-container">
-                    <button onclick="onFontSize('+')">A+</button>
-                    <button onclick="onFontSize('-')">A-</button>
-                    
+
+                <div class="text-controls-container">
+                    <button onclick="onFontSize('+')" class="increase-font-size">A+</button>
+                    <button onclick="onFontSize('-')" class="decrease-font-size">A-</button>
                     <input type="color" class="color-input" oninput="onColorChange(this.value)" value="#ffffff"
                         title="Choose text color">
-              
                 </div>
             </section>
         </main>

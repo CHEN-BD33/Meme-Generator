@@ -34,7 +34,7 @@ function renderMeme() {
 
 function onSelectImg(elImg) {
     const imgId = elImg.dataset.imgId
-   setImg(imgId)
+    setImg(imgId)
     renderMeme()
 }
 
@@ -50,15 +50,30 @@ function resizeCanvas() {
 
 function drawText(line, idx) {
     const { txt, size, color } = line
-    gCtx.fillStyle = color
-    gCtx.font = `${size}px Impact`
-    gCtx.textAlign = 'center'
-
     const x = gElCanvas.width / 2
-    const y = idx === 0 ? 50 : gElCanvas.height - 50
+    const y = idx === 0 ? 50 : idx === 1 ? gElCanvas.height - 50 : gElCanvas.height / 2
+
+    gCtx.font = `${size}px Impact`
+    gCtx.fillStyle = color
+    gCtx.strokeStyle = 'black'
+    gCtx.lineWidth = 2
+    gCtx.textAlign = 'center'
+    gCtx.textBaseline = 'middle'
 
     gCtx.strokeText(txt, x, y)
     gCtx.fillText(txt, x, y)
+
+    if (idx === gMeme.selectedLineIdx) {
+        const metrics = gCtx.measureText(txt)
+        gCtx.strokeStyle = '#ffffff'
+        gCtx.setLineDash([5, 5])
+        gCtx.strokeRect(
+            x - metrics.width / 2 - 10,
+            y - size / 2 - 10,
+            metrics.width + 20,
+            size + 20
+        )
+    }
 }
 
 function onTextInput(txt) {
@@ -78,7 +93,28 @@ function onColorChange(color) {
     renderMeme()
 }
 
-function onFontSize(diff){
+function onFontSize(diff) {
     setFontSize(diff)
     renderMeme()
+}
+
+function onAddLine(txt) {
+    addLine(txt)
+    renderMeme()
+}
+
+function onSwitchLine() {
+    switchLine()
+    updateControlsToSelectedLine()
+    renderMeme()
+}
+
+function updateControlsToSelectedLine() {
+    const selectedLine = gMeme.lines[gMeme.selectedLineIdx]
+
+    const elTextInput = document.querySelector('.text-input')
+    elTextInput.value = selectedLine.txt
+
+    const elColorInput = document.querySelector('.color-input')
+    elColorInput.value = selectedLine.color
 }
