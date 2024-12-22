@@ -5,15 +5,13 @@ let gCtx
 
 function onInit() {
     renderGallery()
-
     gElCanvas = document.querySelector('.editor-canvas')
     gCtx = gElCanvas.getContext('2d')
-
+    addEvListeners()
     window.addEventListener('resize', () => {
         resizeCanvas()
         coverCanvasWithImg(document.querySelector('img'))
     })
-
     renderMeme()
 }
 
@@ -29,6 +27,30 @@ function renderMeme() {
         meme.lines.forEach((line, idx) => {
             drawText(line, idx)
         })
+    }
+}
+
+function addEvListeners() {
+    gElCanvas.addEventListener('click', onCanvasClick)
+}
+
+function onCanvasClick(ev) {
+    const { offsetX, offsetY } = ev
+    const clickedLineIdx = gMeme.lines.findIndex(line => {
+        const halfWidth = line.width / 2
+        const halfHeight = line.height / 2
+        return (
+            offsetX >= line.x - halfWidth - 10 &&
+            offsetX <= line.x + halfWidth + 10 &&
+            offsetY >= line.y - halfHeight - 10 &&
+            offsetY <= line.y + halfHeight + 10
+        )
+    })
+
+    if (clickedLineIdx !== -1) {
+        gMeme.selectedLineIdx = clickedLineIdx
+        updateControlsToSelectedLine()
+        renderMeme()
     }
 }
 
@@ -49,10 +71,8 @@ function resizeCanvas() {
 }
 
 function drawText(line, idx) {
-    const { txt, size, color } = line
-    const x = gElCanvas.width / 2
-    const y = idx === 0 ? 50 : idx === 1 ? gElCanvas.height - 50 : gElCanvas.height / 2
-
+    const { txt, size, color, x, y } = line
+    
     gCtx.font = `${size}px Impact`
     gCtx.fillStyle = color
     gCtx.strokeStyle = 'black'
@@ -63,8 +83,11 @@ function drawText(line, idx) {
     gCtx.strokeText(txt, x, y)
     gCtx.fillText(txt, x, y)
 
+    const metrics = gCtx.measureText(txt)
+    line.width = metrics.width
+    line.height = size
+
     if (idx === gMeme.selectedLineIdx) {
-        const metrics = gCtx.measureText(txt)
         gCtx.strokeStyle = '#ffffff'
         gCtx.setLineDash([5, 5])
         gCtx.strokeRect(
