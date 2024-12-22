@@ -6,7 +6,7 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'I sometimes eat Falafel',
+            txt: 'Enter your text here...',
             size: 20,
             color: '#FFFFFF',
             x: 200,
@@ -50,7 +50,7 @@ function addLine(txt = 'Enter your text here..', size = 20, color = '#FFFFFF') {
     const y = gMeme.lines.length === 0 ? 50 : 
     gMeme.lines.length === 1 ? gElCanvas.height - 50 : 
     gElCanvas.height / 2
-    
+
     gMeme.lines.push({
         txt,
         size,

@@ -4,7 +4,14 @@ let gElCanvas
 let gCtx
 
 function onInit() {
+    document.querySelector('.main-container').style.display = 'block'
+    document.querySelector('.editor-container').style.display = 'none'
+
     renderGallery()
+    initCanvas()
+}
+
+function initCanvas() {
     gElCanvas = document.querySelector('.editor-canvas')
     gCtx = gElCanvas.getContext('2d')
     addEvListeners()
@@ -13,6 +20,7 @@ function onInit() {
         coverCanvasWithImg(document.querySelector('img'))
     })
     renderMeme()
+
 }
 
 function renderMeme() {
@@ -55,6 +63,9 @@ function onCanvasClick(ev) {
 }
 
 function onSelectImg(elImg) {
+    document.querySelector('.main-container').style.display = 'none'
+    document.querySelector('.editor-container').style.display = 'block'
+
     const imgId = elImg.dataset.imgId
     setImg(imgId)
     renderMeme()
@@ -72,7 +83,7 @@ function resizeCanvas() {
 
 function drawText(line, idx) {
     const { txt, size, color, x, y } = line
-    
+
     gCtx.font = `${size}px Impact`
     gCtx.fillStyle = color
     gCtx.strokeStyle = 'black'
