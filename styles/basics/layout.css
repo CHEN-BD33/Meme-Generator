@@ -8,8 +8,8 @@
 
 .main-layout>.full {
     grid-column: 1 / -1;
-    margin-inline: -20px;
-    padding-inline: 20px;
+    /* margin-inline: -20px; */
+    /* padding-inline: 20px; */
 }
 
 /* gallery-layout */
