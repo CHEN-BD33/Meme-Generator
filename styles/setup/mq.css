@@ -1,9 +1,6 @@
 /* MOBILE ONLY  */
 
 @media (max-width: 900px) {
-    .main-layout {
-        padding: 20px;
-    }
 
     .main-nav {
         position: fixed;

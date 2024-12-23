@@ -3,13 +3,13 @@
 .main-layout {
     display: grid;
     grid-template-rows: auto 1fr auto;
-    padding: 50px
+    padding: 20px
 }
 
 .main-layout>.full {
     grid-column: 1 / -1;
-    margin-inline: -50px;
-    padding-inline: 50px;
+    margin-inline: -20px;
+    padding-inline: 20px;
 }
 
 /* gallery-layout */
