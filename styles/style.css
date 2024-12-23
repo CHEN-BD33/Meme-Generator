@@ -1,20 +1,20 @@
 /* SETUP */
-@import url('/styles/setup/typography.css');
-@import url('/styles/setup/vars.css');
+@import url('styles/setup/typography.css');
+@import url('styles/setup/vars.css');
 
 /* BASICS */
-@import url('/styles/basics/base.css');
-@import url('/styles/basics/helpers.css');
-@import url('/styles/basics/layout.css');
+@import url('styles/basics/base.css');
+@import url('styles/basics/helpers.css');
+@import url('styles/basics/layout.css');
 
 /* COMPONENTS */
-@import url('/styles/components/main-header.css');
-@import url('/styles/components/logo.css');
-@import url('/styles/components/main-nav.css');
-@import url('/styles/components/main-screen.css');
-@import url('/styles/components/gallery.css');
-@import url('/styles/components/search-bar.css');
-@import url('/styles/components/edtior.css');
+@import url('styles/components/main-header.css');
+@import url('styles/components/logo.css');
+@import url('styles/components/main-nav.css');
+@import url('styles/components/main-screen.css');
+@import url('styles/components/gallery.css');
+@import url('styles/components/search-bar.css');
+@import url('styles/components/edtior.css');
 
 /* MQ */
-@import url('/styles/setup/mq.css');
+@import url('styles/setup/mq.css');
