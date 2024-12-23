@@ -2,6 +2,7 @@
 
 @media (max-width: 900px) {
 
+
     .main-nav {
         position: fixed;
         top: 0;
@@ -9,7 +10,6 @@
         height: 100vh;
         border-inline-start: 1px solid #ccc;
         background-color: rgba(0, 0, 0, 0.9);
-        min-width: 200px;
         transform: translateX(100%);
         transition: transform .6s;
         z-index: 1000;
@@ -39,7 +39,6 @@
 
     .editor-container {
         padding: 1rem;
-        margin: 0 auto; 
     }
 
     .editor-toolbar {
@@ -47,10 +46,8 @@
     }
 
     canvas {
-        display: block; 
-        width: 100%;
+        /* width: 100%; */
         height: auto;
-        margin: 0 auto; 
     }
 }
 
@@ -60,6 +57,7 @@
     .gallery-layout {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
+
 }
 
 /* MEDIUM */
@@ -67,19 +65,15 @@
     .main-layout {
         padding: 30px;
     }
+
     .main-layout>.full {
         grid-column: 1 / -1;
-        /* margin-inline: -30px;
-        padding-inline: 30px; */
+        margin-inline: -30px;
+        padding-inline: 30px;
     }
-    
 
     .gallery-layout {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    }
-
-    .editor-container {
-        max-width: 800px;
     }
 
     .editor-toolbar {
@@ -100,12 +94,12 @@
     .main-layout {
         padding: 40px;
     }
+
     .main-layout>.full {
         grid-column: 1 / -1;
-        /* margin-inline: -40px;
-        padding-inline: 40px; */
+        margin-inline: -40px;
+        padding-inline: 40px;
     }
-    
 
     .gallery-layout {
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
