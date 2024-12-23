@@ -47,7 +47,7 @@
         </section>
     </main>
 
-    <section class="editor-container flex">
+    <section class="editor-container flex align-center">
         <main>
             <canvas height="400" width="400" class="editor-canvas"> </canvas>
 
@@ -55,9 +55,9 @@
                 <input type="text" class="text-input" placeholder="Enter your text here..."
                     oninput="onTextInput(this.value)">
                 <div class="line-controls-container flex justify-center">
-                    <button onclick="onAddLine()" class="add-line-btn">
+                    <button onclick="onAddLine()" class="add-line-btn"  title="Add line">
                         <i class="fa-solid fa-plus"></i></button>
-                    <button onclick="onSwitchLine()" class="switch-lines-btn">
+                    <button onclick="onSwitchLine()" class="switch-lines-btn"  title="Switch line">
                         <i class="fa-solid fa-arrows-up-down"></i></button>
                 </div>
 
