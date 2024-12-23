@@ -8,6 +8,7 @@ function onInit() {
     document.querySelector('.editor-container').style.display = 'none'
 
     renderGallery()
+    renderKeywordsList()
     initCanvas()
 }
 
@@ -138,7 +139,7 @@ function onAddLine(txt) {
     const elTextInput = document.querySelector('.text-input')
     elTextInput.value = gMeme.lines[gMeme.selectedLineIdx].txt
     elTextInput.focus()
-    
+
     renderMeme()
 }
 

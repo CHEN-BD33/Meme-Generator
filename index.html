@@ -26,14 +26,24 @@
 
 
     <main class="main-container">
+
         <section class="search-bar">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" class="meme-search" placeholder="Search" oninput="OnSearchMeme()">
+            <input type="text" class="search-img" list="keywords-list" placeholder="Search keywords"
+                oninput="OnSearchMeme(this.value)">
+            <button onclick="onClearFilter()" class="clear-btn">
+                <i class="fa-solid fa-xmark"></i></button>
+            <datalist id="keywords-list">
+                <option value="funny">
+                <option value="animal">
+                <option value="happy">
+                <option value="sad">
+                <option value="akward">
+                <option value="bad">
+            </datalist>
         </section>
 
         <section class="gallery-container gallery-layout">
-            <!-- <img src="images/1.jpg" onclick="onSelectImg(this)" data-img-id="1" alt="meme template 1" class="gallery-img">
-            <img src="images/2.jpg" onclick="onSelectImg(this)" data-img-id="2" alt="meme template 2" class="gallery-img"> -->
         </section>
     </main>
 
@@ -66,7 +76,7 @@
                         <i class="fa-solid fa-fill"></i>
                     </label>
                 </div>
-                
+
                 <div class="action-controls-container flex">
                     <a href="#" onclick="downloadCanvas(this)" download="file-name">
                         <i class="fa-solid fa-download fa-2xl"></i></a>
