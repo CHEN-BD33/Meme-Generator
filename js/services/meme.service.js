@@ -46,7 +46,7 @@ function setFontSize(diff) {
     else if (diff === '-') line.size = Math.max(10, line.size - 2)
 }
 
-function addLine(txt = 'Enter your text here..', size = 30, color = '#FFFFFF') {
+function addLine(txt = 'Enter your text here...', size = 30, color = '#FFFFFF') {
     const y = gMeme.lines.length === 0 ? 50 : 
     gMeme.lines.length === 1 ? gElCanvas.height - 50 : 
     gElCanvas.height / 2
