@@ -42,6 +42,7 @@
 
     .editor-container {
         padding: 1rem;
+        margin: 0 auto; 
     }
 
     .editor-toolbar {
@@ -49,8 +50,11 @@
     }
 
     canvas {
+        display: block; 
         width: 100%;
         height: auto;
+        max-width: 400px; 
+        margin: 0 auto; 
     }
 }
 

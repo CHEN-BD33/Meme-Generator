@@ -1,4 +1,5 @@
 .editor-container {
+    flex-direction: column;
     margin: 0 auto;
     padding: 2rem;
     background-color: var(--clr-primary-2);
