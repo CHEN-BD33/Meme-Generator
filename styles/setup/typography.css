@@ -1,16 +1,11 @@
 /* poppins */
 @font-face {
-    font-family: Poppins-Light;
-    src: url('./fonts/Poppins/Poppins-Light.ttf');
-}
-
-@font-face {
-    font-family: Poppins-Medium;
-    src: url('./fonts/Poppins/Poppins-Medium.ttf');
+    font-family: Poppins;
+    src: url('../../fonts/Poppins/Poppins-Light.ttf');
 }
 
 /* special_elite */
 @font-face {
     font-family: Special_Elite;
-    src: url('./fonts/Special_Elite/SpecialElite-Regular.ttf');
+    src: url('../../fonts/Special_Elite/SpecialElite-Regular.ttf');
 }
