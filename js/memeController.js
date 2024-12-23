@@ -157,3 +157,7 @@ function updateControlsToSelectedLine() {
     const elColorInput = document.querySelector('.color-input')
     elColorInput.value = selectedLine.color
 }
+
+function toggleMenu() {
+    document.body.classList.toggle('menu-open');
+}

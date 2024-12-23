@@ -1,11 +1,4 @@
-
-
-
-
-
-
-
-/* .main-screen {
+.main-screen {
     position: fixed;
     inset: 0;
     background-color: rgb(0 0 0 / 50%);
@@ -19,4 +12,4 @@
 body.menu-open .main-screen {
     opacity: 1;
     pointer-events: auto;
-} */
+}

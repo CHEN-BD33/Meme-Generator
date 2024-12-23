@@ -1,22 +1,8 @@
-
-
-
-
-
-
-
-
-/* :root { */
+:root {
     /* pallete */
-    /* --clr-primary-2: #f0f0f0;
-    --clr-primary-1: #b4ad9e;
-    --clr-primary: #626262;
-    --clr-primary1: #000; */
-
-    /* layout vars */
-
-
-    /* --s: 600px;
-    --m: 880px;
-    --l: 1060px; */
-/* } */
+    --clr-primary-3: rgb(243, 243, 243);
+    --clr-primary-2:#afd9ac;
+    --clr-primary-1: #444;
+    --clr-primary: #105a02;
+    --clr-primary1: #242222;
+}

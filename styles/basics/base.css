@@ -2,51 +2,16 @@
     box-sizing: border-box;
 }
 
-.canvas-container {
-    width: 80vw;
-    margin: 10px auto;
-    background-color: brown;
-    border: 1px solid black;
-}
-
-canvas {
-    background-color: white;
-    border: 1px solid black;
-}
-/* 
 html {
-    color: var(--clr-primary);
-    font-family: playfair, serif;
-    line-height: 1.71428571;
+    color: var(--clr-primary1);
+    font-family: Poppins-Light, serif;
 }
 
 body {
-    font-size: 0.875rem;
+    font-size: 1rem;
     margin: 0;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    line-height: 1.5;
-    margin: 0 0 0.8em;
+footer {
+    text-align: center;
 }
-
-h2 {
-    font-size: 2.14285714em;
-}
-
-p {
-    margin: 0 0 0.8em;
-}
-
-img {
-    width: 100%;
-}
-
-a {
-    color: var(--clr-primary1);
-} */

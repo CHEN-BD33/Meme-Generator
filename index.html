@@ -4,60 +4,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/f6a2c07520.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles/style.css">
     <title>Meme Generator</title>
 </head>
 
 <body class="main-layout" onload="onInit()">
 
-    <!-- <div onclick="toggleMenu()" class="main-screen"></div> -->
+    <div onclick="toggleMenu()" class="main-screen"></div>
 
-    <header class="main-header flex align-center space-between">
+    <header class="main-header flex align-center space-between full">
         <div class="logo">Meme Generator</div>
         <nav class="main-nav">
             <ul class="flex clean-list">
-                <li><button class="gallery-li" onclick="onInit()">Gallery</button></li>
-                <li><button class="saved-li" onclick="onSaved()">Saved</button></li>
+                <li><a href="#gallery" onclick="onInit(event)">Gallery</a></li>
+                <li><a href="#saved" onclick="onSaved(event)">Saved</a></li>
             </ul>
         </nav>
-        <!-- <button onclick="toggleMenu()" type="button" class="btn-menu">☰</button> -->
+        <button onclick="toggleMenu()" type="button" class="btn-menu">☰</button>
     </header>
 
 
     <main class="main-container">
-
         <section class="search-bar">
+            <i class="fa-solid fa-magnifying-glass"></i>
             <input type="text" class="meme-search" placeholder="Search" oninput="OnSearchMeme()">
         </section>
 
-        <section class="gallery-container">
+        <section class="gallery-container gallery-layout">
             <!-- <img src="images/1.jpg" onclick="onSelectImg(this)" data-img-id="1" alt="meme template 1" class="gallery-img">
             <img src="images/2.jpg" onclick="onSelectImg(this)" data-img-id="2" alt="meme template 2" class="gallery-img"> -->
         </section>
     </main>
 
-    <section class="editor-container">
+    <section class="editor-container flex">
         <main>
             <canvas height="400" width="400" class="editor-canvas"> </canvas>
-            <section class="editor-toolbar">
+
+            <section class="editor-toolbar flex align-center justify-center ">
                 <input type="text" class="text-input" placeholder="Enter your text here..."
                     oninput="onTextInput(this.value)">
+                <div class="line-controls-container flex justify-center">
+                    <button onclick="onAddLine()" class="add-line-btn">
+                        <i class="fa-solid fa-plus"></i></button>
+                    <button onclick="onSwitchLine()" class="switch-lines-btn">
+                        <i class="fa-solid fa-arrows-up-down"></i></button>
+                </div>
 
-                <div class="line-controls-container">
-                    <button onclick="onAddLine()" class="add-line-btn">+</button>
-                    <button onclick="onSwitchLine()" class="switch-lines-btn">↑↓</button>
+                <div class="text-controls-container flex justify-center">
+                    <button onclick="onFontSize('+')" class="increase-font-size">
+                        <i class="fa-solid fa-font"></i>
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                    <button onclick="onFontSize('-')" class="decrease-font-size">
+                        <i class="fa-solid fa-font"></i>
+                        <i class="fa-solid fa-minus"></i>
+                    </button>
+                    <label class="color-label">
+                        <input type="color" class="color-input" oninput="onColorChange(this.value)" value="#ffffff"
+                            title="Choose text color">
+                        <i class="fa-solid fa-fill"></i>
+                    </label>
                 </div>
                 
-                <div class="text-controls-container">
-                    <button onclick="onFontSize('+')" class="increase-font-size">A+</button>
-                    <button onclick="onFontSize('-')" class="decrease-font-size">A-</button>
-                    <input type="color" class="color-input" oninput="onColorChange(this.value)" value="#ffffff"
-                        title="Choose text color">
+                <div class="action-controls-container flex">
+                    <a href="#" onclick="downloadCanvas(this)" download="file-name">
+                        <i class="fa-solid fa-download fa-2xl"></i></a>
+                    <button onclick="onSaveMeme()">
+                        <i class="fa-solid fa-floppy-disk fa-2xl"></i></button>
                 </div>
             </section>
         </main>
-        <a href="#" onclick="downloadCanvas(this)" download="file-name">Download</a>
     </section>
+
+    <footer class="main-footer">© 2024 Meme Generator - All Rights Reserved</footer>
 
 </body>
 
