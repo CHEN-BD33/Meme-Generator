@@ -15,6 +15,7 @@
 @import 'components/gallery.css';
 @import 'components/search-bar.css';
 @import 'components/editor.css';
+@import 'components/saved-meme.css';
 
 /* MQ */
 @import 'setup/mq.css';

@@ -17,8 +17,8 @@
         <div class="logo">Meme Generator</div>
         <nav class="main-nav">
             <ul class="flex clean-list">
-                <li><a href="#gallery" onclick="onInit(event)">Gallery</a></li>
-                <li><a href="#saved" onclick="onSaved(event)">Saved</a></li>
+                <li><a href="#gallery" onclick="event.preventDefault(); onInit()">Gallery</a></li>
+                <li><a href="#saved" onclick="onSaveNavClick()">Saved</a></li>
             </ul>
         </nav>
         <button onclick="toggleMenu()" type="button" class="btn-menu">☰</button>
@@ -26,7 +26,6 @@
 
 
     <main class="main-container">
-
         <section class="search-bar">
             <i class="fa-solid fa-magnifying-glass"></i>
             <input type="text" class="search-img" list="keywords-list" placeholder="Search keywords"
@@ -43,48 +42,49 @@
             </datalist>
         </section>
 
-        <section class="gallery-container gallery-layout">
+        <section>
+            <div class="gallery-container gallery-layout"></div>
         </section>
     </main>
 
     <section class="editor-container flex align-center">
-        <main>
-            <canvas height="400" width="400" class="editor-canvas"> </canvas>
-
-            <section class="editor-toolbar flex align-center justify-center ">
-                <input type="text" class="text-input" placeholder="Enter your text here..."
-                    oninput="onTextInput(this.value)">
-                <div class="line-controls-container flex justify-center">
-                    <button onclick="onAddLine()" class="add-line-btn"  title="Add line">
-                        <i class="fa-solid fa-plus"></i></button>
-                    <button onclick="onSwitchLine()" class="switch-lines-btn"  title="Switch line">
-                        <i class="fa-solid fa-arrows-up-down"></i></button>
-                </div>
-
-                <div class="text-controls-container flex justify-center">
-                    <button onclick="onFontSize('+')" class="increase-font-size">
-                        <i class="fa-solid fa-font"></i>
-                        <i class="fa-solid fa-plus"></i>
-                    </button>
-                    <button onclick="onFontSize('-')" class="decrease-font-size">
-                        <i class="fa-solid fa-font"></i>
-                        <i class="fa-solid fa-minus"></i>
-                    </button>
-                    <label class="color-label">
-                        <input type="color" class="color-input" oninput="onColorChange(this.value)" value="#ffffff"
-                            title="Choose text color">
-                        <i class="fa-solid fa-fill"></i>
-                    </label>
-                </div>
-
-                <div class="action-controls-container flex">
-                    <a href="#" onclick="downloadCanvas(this)" download="file-name">
-                        <i class="fa-solid fa-download fa-2xl"></i></a>
-                    <button onclick="onSaveMeme()">
-                        <i class="fa-solid fa-floppy-disk fa-2xl"></i></button>
-                </div>
-            </section>
-        </main>
+        <canvas height="400" width="400" class="editor-canvas"> </canvas>
+        <section class="editor-toolbar flex align-center justify-center ">
+            <input type="text" class="text-input" placeholder="Enter your text here..."
+                oninput="onTextInput(this.value)">
+            <div class="line-controls-container flex justify-center">
+                <button onclick="onAddLine()" class="add-line-btn" title="Add line">
+                    <i class="fa-solid fa-plus"></i></button>
+                <button onclick="onSwitchLine()" class="switch-lines-btn" title="Switch line">
+                    <i class="fa-solid fa-arrows-up-down"></i></button>
+            </div>
+            <div class="text-controls-container flex justify-center">
+                <button onclick="onFontSize('+')" class="increase-font-size">
+                    <i class="fa-solid fa-font"></i>
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+                <button onclick="onFontSize('-')" class="decrease-font-size">
+                    <i class="fa-solid fa-font"></i>
+                    <i class="fa-solid fa-minus"></i>
+                </button>
+                <label class="color-label">
+                    <input type="color" class="color-input" oninput="onColorChange(this.value)" value="#ffffff"
+                        title="Choose text color">
+                    <i class="fa-solid fa-fill"></i>
+                </label>
+            </div>
+            <div class="action-controls-container flex">
+                <a href="#" onclick="downloadCanvas(this)" download="file-name">
+                    <i class="fa-solid fa-download fa-2xl"></i></a>
+                <button onclick="onSaveMeme()">
+                    <i class="fa-solid fa-floppy-disk fa-2xl"></i></button>
+            </div>
+        </section>
+    </section>
+    <section class="saved-memes-container saved-memes-layout">
+        <button onclick="onDeleteSavedMemes()" class="delete-saved-meme-btn" title="Delete Saved Memes">
+            <i class="fa-solid fa-trash fa-2xl"></i></button>
+        <div class="saved-memes-gallery"></div>
     </section>
 
     <footer class="main-footer">© 2024 Meme Generator - All Rights Reserved</footer>

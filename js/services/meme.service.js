@@ -1,6 +1,5 @@
 'use strict'
 
-
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
@@ -22,6 +21,9 @@ var gMeme = {
     ]
 }
 // var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
+
+const STORAGE_KEY = "savedmemeDB"
+var gSavedMemes = loadFromStorage(STORAGE_KEY) || []
 
 function getMeme() {
     return gMeme
@@ -47,9 +49,9 @@ function setFontSize(diff) {
 }
 
 function addLine(txt = 'Enter your text here...', size = 30, color = '#FFFFFF') {
-    const y = gMeme.lines.length === 0 ? 50 : 
-    gMeme.lines.length === 1 ? gElCanvas.height - 50 : 
-    gElCanvas.height / 2
+    const y = gMeme.lines.length === 0 ? 50 :
+        gMeme.lines.length === 1 ? gElCanvas.height - 50 :
+            gElCanvas.height / 2
 
     gMeme.lines.push({
         txt,
@@ -65,4 +67,27 @@ function addLine(txt = 'Enter your text here...', size = 30, color = '#FFFFFF') 
 
 function switchLine() {
     gMeme.selectedLineIdx = (gMeme.selectedLineIdx + 1) % gMeme.lines.length
+}
+
+function saveMeme() {
+    const memeData = {
+        imgData: gElCanvas.toDataURL(),
+        gMeme: {
+            selectedImgId: gMeme.selectedImgId,
+            selectedLineIdx: gMeme.selectedLineIdx,
+            lines: gMeme.lines
+        }
+    }
+    gSavedMemes.push(memeData)
+    saveToStorage(STORAGE_KEY, gSavedMemes)
+}
+
+function getSavedMemes() {
+    return loadFromStorage(STORAGE_KEY) || []
+}
+
+function deleteSavedMemes() {
+    const savedMemes = getSavedMemes()
+    savedMemes.length = 0
+    saveToStorage(STORAGE_KEY, savedMemes)
 }

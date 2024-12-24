@@ -12,9 +12,9 @@
     padding-inline: 20px;
 }
 
-/* gallery-layout */
+/* gallery-layout, saved-memes-layout */
 
-.gallery-layout {
+.gallery-layout, .saved-memes-layout {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1rem;

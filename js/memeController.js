@@ -162,3 +162,56 @@ function updateControlsToSelectedLine() {
 function toggleMenu() {
     document.body.classList.toggle('menu-open');
 }
+
+function onSaveMeme(event) {
+    saveMeme()
+}
+
+function onSaveNavClick() {
+    // elSavedNav.classList.add('active')
+    // document.querySelector('.gallery-nav-btn').classList.remove('active')
+    document.querySelector('.editor-container').style.display = 'none'
+    document.querySelector('.main-container').style.display = 'none'
+    document.querySelector('.saved-memes-container').style.display = 'block'
+    // if (!savedMemes.length) {
+    //     document.querySelector('.saved-memes-gallery h1').style.display = 'block'
+    //     return
+    // }
+    renderSavedMeme()
+}
+
+function renderSavedMeme() {
+    const savedMemes = getSavedMemes()
+    if (!savedMemes) return
+
+    const strHtmls = savedMemes.map((memeData, idx) =>
+        `<img src="${memeData.imgData}" 
+         onclick="onEditMeme(${idx})"
+         class="saved-meme-img">
+    `).join('')
+
+    document.querySelector('.saved-memes-gallery').innerHTML = strHtmls
+}
+
+function onDeleteSavedMemes() {
+    deleteSavedMemes()
+    renderSavedMeme()
+}
+
+function onEditMeme(idx) {
+const savedMemes = getSavedMemes()
+const editMeme = savedMemes[idx]
+
+gMeme = {
+    selectedImgId: editMeme.gMeme.selectedImgId,
+    selectedLineIdx: editMeme.gMeme.selectedLineIdx,
+    lines: editMeme.gMeme.lines
+}
+
+document.querySelector('.editor-container').style.display = 'block'
+document.querySelector('.main-container').style.display = 'none'
+document.querySelector('.saved-memes-container').style.display = 'none'
+
+renderMeme()
+updateControlsToSelectedLine()
+}
