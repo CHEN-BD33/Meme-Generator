@@ -6,6 +6,7 @@ let gCtx
 function onInit() {
     document.querySelector('.main-container').style.display = 'block'
     document.querySelector('.editor-container').style.display = 'none'
+    document.querySelector('.saved-memes-container').style.display = 'none'
 
     renderGallery()
     renderKeywordsList()
@@ -177,9 +178,9 @@ function onSaveMeme(event) {
 function onSaveNavClick() {
     // elSavedNav.classList.add('active')
     // document.querySelector('.gallery-nav-btn').classList.remove('active')
+    document.querySelector('.saved-memes-container').style.display = 'block'
     document.querySelector('.editor-container').style.display = 'none'
     document.querySelector('.main-container').style.display = 'none'
-    document.querySelector('.saved-memes-container').style.display = 'block'
     // if (!savedMemes.length) {
     //     document.querySelector('.saved-memes-gallery h1').style.display = 'block'
     //     return
