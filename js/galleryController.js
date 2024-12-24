@@ -22,7 +22,7 @@ function renderKeywordsList() {
     document.querySelector('#keywords-list').innerHTML = strHtmls
 }
 
-function OnSearchMeme(filterBy) {
+function onSearchMeme(filterBy) {
     setFilter(filterBy)
     renderGallery()
 }
@@ -30,5 +30,20 @@ function OnSearchMeme(filterBy) {
 function onClearFilter(){
     document.querySelector('.search-img').value = ''
     clearFilter()
+    renderGallery()
+}
+
+function onImgInput(ev) {
+    loadImageFromInput(ev, addImgToGallery)
+}
+
+function addImgToGallery(imgSrc) {
+    const newImgId = gImgs.length + 1
+    gImgs.push({
+        id: newImgId,
+        url: imgSrc,
+        keywords: ['uploaded']
+    })
+    
     renderGallery()
 }

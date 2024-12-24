@@ -46,3 +46,15 @@ function getUniqueKeywords() {
 function clearFilter() {
     gFilterBy = ''
 }
+
+function loadImageFromInput(ev, onImageReady) {
+    const reader = new FileReader()
+
+    reader.onload = function (event) {
+        let img = new Image() 
+        img.src = event.target.result 
+        img.onload = () => onImageReady(img.src)
+    }
+    reader.readAsDataURL(ev.target.files[0]) 
+}
+

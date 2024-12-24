@@ -28,7 +28,14 @@ function renderMeme() {
 
     const meme = getMeme()
     const img = new Image()
-    img.src = `images/${meme.selectedImgId}.jpg`
+
+    const selectedImg = gImgs.find(img => img.id === meme.selectedImgId)
+
+    if (selectedImg.url.startsWith('data:')) {
+        img.src = selectedImg.url
+    } else {
+        img.src = `images/${meme.selectedImgId}.jpg`
+    }
 
     img.onload = () => {
         coverCanvasWithImg(img)
@@ -67,7 +74,7 @@ function onSelectImg(elImg) {
     document.querySelector('.main-container').style.display = 'none'
     document.querySelector('.editor-container').style.display = 'block'
 
-    const imgId = elImg.dataset.imgId
+    const imgId = +elImg.dataset.imgId
     setImg(imgId)
     renderMeme()
 }
@@ -220,3 +227,4 @@ function onDeleteLine() {
     deleteLine()
     renderMeme()
 }
+
