@@ -57,6 +57,8 @@
                     <i class="fa-solid fa-plus"></i></button>
                 <button onclick="onSwitchLine()" class="switch-lines-btn" title="Switch line">
                     <i class="fa-solid fa-arrows-up-down"></i></button>
+                <button onclick="onDeleteLine()" class="delete-lines-btn" title="Delete line">
+                    <i class="fa-solid fa-trash fa-2xl"></i></button>
             </div>
             <div class="text-controls-container flex justify-center">
                 <button onclick="onFontSize('+')" class="increase-font-size">
@@ -74,9 +76,9 @@
                 </label>
             </div>
             <div class="action-controls-container flex">
-                <a href="#" onclick="downloadCanvas(this)" download="file-name">
+                <a href="#" onclick="downloadCanvas(this)" download="file-name" title="Download">
                     <i class="fa-solid fa-download fa-2xl"></i></a>
-                <button onclick="onSaveMeme()">
+                <button onclick="onSaveMeme()" title="Save">
                     <i class="fa-solid fa-floppy-disk fa-2xl"></i></button>
             </div>
         </section>

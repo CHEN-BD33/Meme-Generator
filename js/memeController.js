@@ -199,19 +199,24 @@ function onDeleteSavedMemes() {
 }
 
 function onEditMeme(idx) {
-const savedMemes = getSavedMemes()
-const editMeme = savedMemes[idx]
+    const savedMemes = getSavedMemes()
+    const editMeme = savedMemes[idx]
 
-gMeme = {
-    selectedImgId: editMeme.gMeme.selectedImgId,
-    selectedLineIdx: editMeme.gMeme.selectedLineIdx,
-    lines: editMeme.gMeme.lines
+    gMeme = {
+        selectedImgId: editMeme.gMeme.selectedImgId,
+        selectedLineIdx: editMeme.gMeme.selectedLineIdx,
+        lines: editMeme.gMeme.lines
+    }
+
+    document.querySelector('.editor-container').style.display = 'block'
+    document.querySelector('.main-container').style.display = 'none'
+    document.querySelector('.saved-memes-container').style.display = 'none'
+
+    renderMeme()
+    updateControlsToSelectedLine()
 }
 
-document.querySelector('.editor-container').style.display = 'block'
-document.querySelector('.main-container').style.display = 'none'
-document.querySelector('.saved-memes-container').style.display = 'none'
-
-renderMeme()
-updateControlsToSelectedLine()
+function onDeleteLine() {
+    deleteLine()
+    renderMeme()
 }

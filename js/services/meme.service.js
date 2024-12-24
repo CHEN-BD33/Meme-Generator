@@ -91,3 +91,9 @@ function deleteSavedMemes() {
     savedMemes.length = 0
     saveToStorage(STORAGE_KEY, savedMemes)
 }
+
+function deleteLine() {
+    if (!gMeme.lines.length) return
+    const lineIdx = gMeme.selectedLineIdx
+    gMeme.lines.splice(lineIdx, 1)
+}
