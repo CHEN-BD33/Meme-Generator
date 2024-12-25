@@ -66,16 +66,16 @@
             </div>
 
             <div class="text-controls-container flex justify-center">
-                <button onclick="onFontSize('+')" class="increase-font-size">
+                <button onclick="onFontSize('+')" class="increase-font-size" title="Increase font size">
                     <i class="fa-solid fa-font"></i>
                     <i class="fa-solid fa-plus"></i>
                 </button>
-                <button onclick="onFontSize('-')" class="decrease-font-size">
+                <button onclick="onFontSize('-')" class="decrease-font-size" title="Decrease font size">
                     <i class="fa-solid fa-font"></i>
                     <i class="fa-solid fa-minus"></i>
                 </button>
                 <label>
-                    <select class="font-family-select" onchange="onChangeFont(this.value)">
+                    <select class="font-family-select" onchange="onChangeFont(this.value)"  title="Choose font">
                         <option value="impact" selected>Impact</option>
                         <option value="cursive">Cursive</option>
                         <option value="monospace">Monospace</option>
