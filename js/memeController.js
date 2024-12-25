@@ -33,7 +33,6 @@ function renderSection(sectionName) {
     savedContainer.classList.toggle('hidden', sectionName !== 'saved')
 }
 
-
 function renderMeme() {
     const meme = getMeme()
     const img = new Image()
@@ -98,17 +97,21 @@ function resizeCanvas() {
 }
 
 function drawText(line, idx) {
-    const { txt, size, color, x, y } = line
+    const { txt, size, font, color, align, x, y } = line
 
-    gCtx.font = `${size}px Impact`
+    gCtx.font = `${size}px ${font}`
     gCtx.fillStyle = color
     gCtx.strokeStyle = 'black'
     gCtx.lineWidth = 2
-    gCtx.textAlign = 'center'
+    gCtx.textAlign = align
     gCtx.textBaseline = 'middle'
 
-    gCtx.strokeText(txt, x, y)
-    gCtx.fillText(txt, x, y)
+    var xPos = x
+    if (align === 'left') xPos = 50
+    if (align === 'right') xPos = gElCanvas.width - 50
+
+    gCtx.strokeText(txt, xPos, y)
+    gCtx.fillText(txt, xPos, y)
 
     const metrics = gCtx.measureText(txt)
     line.width = metrics.width
@@ -117,8 +120,12 @@ function drawText(line, idx) {
     if (idx === gMeme.selectedLineIdx) {
         gCtx.strokeStyle = '#ffffff'
         gCtx.setLineDash([5, 5])
+        var rectX = xPos
+        if (align === 'center') rectX -= metrics.width / 2
+        if (align === 'right') rectX -= metrics.width
+
         gCtx.strokeRect(
-            x - metrics.width / 2 - 10,
+            rectX - 10,
             y - size / 2 - 10,
             metrics.width + 20,
             size + 20
@@ -165,13 +172,27 @@ function onSwitchLine() {
 }
 
 function updateControlsToSelectedLine() {
-    const selectedLine = gMeme.lines[gMeme.selectedLineIdx]
+
+    const meme = getMeme()
+    const selectedLine = meme.lines[gMeme.selectedLineIdx]
 
     const elTextInput = document.querySelector('.text-input')
     elTextInput.value = selectedLine.txt
 
     const elColorInput = document.querySelector('.color-input')
     elColorInput.value = selectedLine.color
+
+    const elFontSelect = document.querySelector('.font-family-select')
+    elFontSelect.value = selectedLine.font
+
+    const alignButtons = document.querySelectorAll('.text-align-controls button')
+    alignButtons.forEach(button => {
+        button.classList.remove('active')
+        if (button.onclick && button.onclick.toString().includes(selectedLine.align)) {
+            button.classList.add('active')
+        }
+    })
+
 }
 
 function toggleMenu() {
@@ -225,3 +246,14 @@ function onDeleteLine() {
     renderMeme()
 }
 
+function onChangeFont(font) {
+    setFont(font)
+    renderMeme()
+    updateControlsToSelectedLine()
+}
+
+function onAlignText(align) {
+    setAlignText(align)
+    renderMeme()
+    updateControlsToSelectedLine()
+}

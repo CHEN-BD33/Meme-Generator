@@ -71,9 +71,28 @@
                     <i class="fa-solid fa-font"></i>
                     <i class="fa-solid fa-minus"></i>
                 </button>
+                <label>
+                    <select class="font-family-select" onchange="onChangeFont(this.value)">
+                        <option value="impact" selected>Impact</option>
+                        <option value="cursive">Cursive</option>
+                        <option value="monospace">Monospace</option>
+                        <option value="san-serif">San-serif</option>
+                    </select>
+                </label>
+                <div class="text-align-controls flex">
+                    <button onclick="onAlignText('left')" title="Align left">
+                        <i class="fa-solid fa-align-left"></i>
+                    </button>
+                    <button onclick="onAlignText('center')" title="Align center">
+                        <i class="fa-solid fa-align-center"></i>
+                    </button>
+                    <button onclick="onAlignText('right')" title="Align right">
+                        <i class="fa-solid fa-align-right"></i>
+                    </button>
+                </div>
                 <label class="color-label">
                     <input type="color" class="color-input" oninput="onColorChange(this.value)" value="#ffffff"
-                        title="Choose text color">
+                    title="Choose text color">
                     <i class="fa-solid fa-fill"></i>
                 </label>
             </div>
@@ -92,7 +111,7 @@
         <div class="saved-memes-gallery saved-memes-layout"></div>
     </section>
 
-    <footer class="main-footer">© 2024 Meme Generator - All Rights Reserved</footer>
+    <footer>© 2024 Meme Generator - All Rights Reserved</footer>
 
 </body>
 

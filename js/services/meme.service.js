@@ -7,7 +7,9 @@ var gMeme = {
         {
             txt: 'Enter your text here...',
             size: 30,
+            font: 'impact',
             color: '#FFFFFF',
+            align: 'center',
             x: 200,
             y: 50,
             width: 0,
@@ -56,7 +58,9 @@ function addLine(txt = 'Enter your text here...', size = 30, color = '#FFFFFF') 
     gMeme.lines.push({
         txt,
         size,
+        font: 'impact',
         color,
+        align: 'center',
         x: gElCanvas.width / 2,
         y,
         width: 0,
@@ -97,3 +101,20 @@ function deleteLine() {
     const lineIdx = gMeme.selectedLineIdx
     gMeme.lines.splice(lineIdx, 1)
 }
+
+function setFont(font) {
+    gMeme.lines[gMeme.selectedLineIdx].font = font
+}
+
+function setAlignText(align){
+    gMeme.lines[gMeme.selectedLineIdx].align = align
+}
+
+
+// function getSelectedLine() {
+//     return gMeme.lines[gMeme.selectedLineIdx]
+// }
+
+// function getImgUrlById(id) {
+//     return gImgs.find(img => id === img.id).url
+// }
