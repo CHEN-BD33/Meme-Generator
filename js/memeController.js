@@ -116,8 +116,8 @@ function drawText(line, idx) {
     line.width = metrics.width
     line.height = size
 
-    if (idx === gMeme.selectedLineIdx) {
-        gCtx.strokeStyle = '#ffffff'
+    if (gShouldDrawStroke && idx === gMeme.selectedLineIdx) {
+        gCtx.strokeStyle = '#000000'
         gCtx.setLineDash([5, 5])
         var rectX = xPos
         if (align === 'center') rectX -= metrics.width / 2
@@ -239,15 +239,15 @@ function onDeleteSavedMemes() {
 }
 
 function onEditMeme(idx) {
-    const savedMemes = getSavedMemes()
-    const editMeme = savedMemes[idx]
+    const editMeme = gSavedMemes[idx]
+    gSavedMemes.splice(idx, 1)
+    saveToStorage(STORAGE_KEY, gSavedMemes)
 
     gMeme = {
         selectedImgId: editMeme.gMeme.selectedImgId,
         selectedLineIdx: editMeme.gMeme.selectedLineIdx,
         lines: editMeme.gMeme.lines
     }
-
     renderSection('editor')
     renderMeme()
     updateControlsToSelectedLine()
