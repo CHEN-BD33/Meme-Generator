@@ -17,13 +17,12 @@
         <div class="logo">Meme Generator</div>
         <nav class="main-nav">
             <ul class="flex clean-list">
-                <li><a href="#gallery" onclick="event.preventDefault(); onInit()">Gallery</a></li>
+                <li><a href="#gallery" onclick="onInit()">Gallery</a></li>
                 <li><a href="#saved" onclick="onSaveNavClick()">Saved</a></li>
             </ul>
         </nav>
         <button onclick="toggleMenu()" type="button" class="btn-menu">☰</button>
     </header>
-
 
     <main class="main-container">
         <section class="search-bar">
@@ -51,9 +50,12 @@
 
     <section class="editor-container flex align-center hidden">
         <canvas height="400" width="400" class="editor-canvas"> </canvas>
+
         <section class="editor-toolbar flex align-center justify-center ">
+
             <input type="text" class="text-input" placeholder="Enter your text here..."
                 oninput="onTextInput(this.value)">
+
             <div class="line-controls-container flex justify-center">
                 <button onclick="onAddLine()" class="add-line-btn" title="Add line">
                     <i class="fa-solid fa-plus"></i></button>
@@ -62,6 +64,7 @@
                 <button onclick="onDeleteLine()" class="delete-lines-btn" title="Delete line">
                     <i class="fa-solid fa-trash fa-2xl"></i></button>
             </div>
+
             <div class="text-controls-container flex justify-center">
                 <button onclick="onFontSize('+')" class="increase-font-size">
                     <i class="fa-solid fa-font"></i>
@@ -92,10 +95,11 @@
                 </div>
                 <label class="color-label">
                     <input type="color" class="color-input" oninput="onColorChange(this.value)" value="#ffffff"
-                    title="Choose text color">
+                        title="Choose text color">
                     <i class="fa-solid fa-fill"></i>
                 </label>
             </div>
+
             <div class="action-controls-container flex">
                 <a href="#" onclick="downloadCanvas(this)" download="file-name" title="Download">
                     <i class="fa-solid fa-download fa-2xl"></i></a>
@@ -115,7 +119,6 @@
 
 </body>
 
-<script src="js/services/util.service.js"></script>
 <script src="js/services/storage.service.js"></script>
 <script src="js/services/meme.service.js"></script>
 <script src="js/services/gallery.service.js"></script>
