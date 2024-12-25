@@ -39,11 +39,10 @@ function onImgInput(ev) {
 
 function addImgToGallery(imgSrc) {
     const newImgId = gImgs.length + 1
-    gImgs.push({
+    gImgs.unshift({
         id: newImgId,
         url: imgSrc,
         keywords: ['uploaded']
     })
-    
     renderGallery()
 }
