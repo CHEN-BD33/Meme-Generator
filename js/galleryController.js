@@ -14,17 +14,17 @@ function renderGallery() {
     document.querySelector('.gallery-container').innerHTML = strHtmls
 }
 
+function onSearchMeme(filterBy) {
+    setFilter(filterBy)
+    renderGallery()
+}
+
 function renderKeywordsList() {
     const keywords = getUniqueKeywords()
     const strHtmls = keywords.map(keyword => `<option value="${keyword}">
         `).join('')
 
     document.querySelector('#keywords-list').innerHTML = strHtmls
-}
-
-function onSearchMeme(filterBy) {
-    setFilter(filterBy)
-    renderGallery()
 }
 
 function onClearFilter(){

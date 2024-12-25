@@ -1,15 +1,12 @@
 .saved-memes-container button {
     background: none;
     border: none;
-    padding: 20px
+    padding: 20px;
+    cursor: pointer;
 }
 
 .saved-memes-gallery img {
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
     border-radius: 8px;
     cursor: pointer;
     transition: transform 0.3s;
-
 }

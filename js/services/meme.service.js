@@ -1,5 +1,7 @@
 'use strict'
 
+const STORAGE_KEY = "savedmemeDB"
+var gSavedMemes = loadFromStorage(STORAGE_KEY) || []
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
@@ -15,17 +17,9 @@ var gMeme = {
             width: 0,
             height: 0
         },
-        // {
-        //     txt: 'Enter your text here',
-        //     size: 40,
-        //     color: 'white'
-        // }
     ]
 }
 // var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
-
-const STORAGE_KEY = "savedmemeDB"
-var gSavedMemes = loadFromStorage(STORAGE_KEY) || []
 
 function getMeme() {
     return gMeme
@@ -35,19 +29,12 @@ function setImg(imgId) {
     gMeme.selectedImgId = imgId
 }
 
+function getSelectedLine() {
+    return gMeme.lines[gMeme.selectedLineIdx]
+}
+
 function setLineTxt(txt) {
-    gMeme.lines[gMeme.selectedLineIdx].txt = txt
-}
-
-function setLineColor(color) {
-    gMeme.lines[gMeme.selectedLineIdx].color = color
-}
-
-function setFontSize(diff) {
-    const line = gMeme.lines[gMeme.selectedLineIdx]
-
-    if (diff === '+') line.size += 2
-    else if (diff === '-') line.size = Math.max(10, line.size - 2)
+    getSelectedLine().txt = txt
 }
 
 function addLine(txt = 'Enter your text here...', size = 30, color = '#FFFFFF') {
@@ -73,6 +60,31 @@ function switchLine() {
     gMeme.selectedLineIdx = (gMeme.selectedLineIdx + 1) % gMeme.lines.length
 }
 
+function deleteLine() {
+    if (!gMeme.lines.length) return
+    const lineIdx = gMeme.selectedLineIdx
+    gMeme.lines.splice(lineIdx, 1)
+}
+
+function setFontSize(diff) {
+    const line = getSelectedLine()
+
+    if (diff === '+') line.size += 2
+    else if (diff === '-') line.size = Math.max(10, line.size - 2)
+}
+
+function setFont(font) {
+    getSelectedLine().font = font
+}
+
+function setAlignText(align) {
+    getSelectedLine().align = align
+}
+
+function setLineColor(color) {
+    getSelectedLine().color = color
+}
+
 function saveMeme() {
     const memeData = {
         imgData: gElCanvas.toDataURL(),
@@ -95,26 +107,3 @@ function deleteSavedMemes() {
     savedMemes.length = 0
     saveToStorage(STORAGE_KEY, savedMemes)
 }
-
-function deleteLine() {
-    if (!gMeme.lines.length) return
-    const lineIdx = gMeme.selectedLineIdx
-    gMeme.lines.splice(lineIdx, 1)
-}
-
-function setFont(font) {
-    gMeme.lines[gMeme.selectedLineIdx].font = font
-}
-
-function setAlignText(align){
-    gMeme.lines[gMeme.selectedLineIdx].align = align
-}
-
-
-// function getSelectedLine() {
-//     return gMeme.lines[gMeme.selectedLineIdx]
-// }
-
-// function getImgUrlById(id) {
-//     return gImgs.find(img => id === img.id).url
-// }

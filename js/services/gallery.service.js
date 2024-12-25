@@ -1,7 +1,6 @@
 'use strict'
 
 var gFilterBy = ''
-
 var gImgs = [
     { id: 1, url: 'images/1.jpg', keywords: ['funny', 'akward'] },
     { id: 2, url: 'images/2.jpg', keywords: ['animal'] },
@@ -32,7 +31,6 @@ function getImgs() {
 function setFilter(filterBy) {
     gFilterBy = filterBy
 }
-
 
 function getUniqueKeywords() {
     const keywords = new Set()

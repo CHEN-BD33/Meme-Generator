@@ -10,18 +10,6 @@ function onInit() {
     initCanvas()
 }
 
-function initCanvas() {
-    gElCanvas = document.querySelector('.editor-canvas')
-    gCtx = gElCanvas.getContext('2d')
-    addEvListeners()
-    window.addEventListener('resize', () => {
-        resizeCanvas()
-        coverCanvasWithImg(document.querySelector('img'))
-    })
-    renderMeme()
-
-}
-
 function renderSection(sectionName) {
     const mainContainer = document.querySelector('.main-container')
     const editorContainer = document.querySelector('.editor-container')
@@ -33,11 +21,40 @@ function renderSection(sectionName) {
     savedContainer.classList.toggle('hidden', sectionName !== 'saved')
 }
 
+function onSelectImg(elImg) {
+    renderSection('editor')
+
+    const imgId = +elImg.dataset.imgId
+    setImg(imgId)
+    renderMeme()
+}
+
+function coverCanvasWithImg(elImg) {
+    gElCanvas.height = (elImg.naturalHeight / elImg.naturalWidth) * gElCanvas.width
+    gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
+}
+
+function resizeCanvas() {
+    const elContainer = document.querySelector('.canvas-container')
+    gElCanvas.width = elContainer.clientWidth - 2
+}
+
+function initCanvas() {
+    gElCanvas = document.querySelector('.editor-canvas')
+    gCtx = gElCanvas.getContext('2d')
+    addEvListeners()
+    window.addEventListener('resize', () => {
+        resizeCanvas()
+        coverCanvasWithImg(document.querySelector('img'))
+    })
+    renderMeme()
+}
+
 function renderMeme() {
     const meme = getMeme()
     const img = new Image()
 
-    const selectedImg = gImgs.find(img => img.id === meme.selectedImgId)
+    const selectedImg = getImgs().find(img => img.id === meme.selectedImgId)
 
     if (selectedImg.url.startsWith('data:')) {
         img.src = selectedImg.url
@@ -52,10 +69,6 @@ function renderMeme() {
             drawText(line, idx)
         })
     }
-}
-
-function addEvListeners() {
-    gElCanvas.addEventListener('click', onCanvasClick)
 }
 
 function onCanvasClick(ev) {
@@ -78,22 +91,8 @@ function onCanvasClick(ev) {
     }
 }
 
-function onSelectImg(elImg) {
-    renderSection('editor')
-
-    const imgId = +elImg.dataset.imgId
-    setImg(imgId)
-    renderMeme()
-}
-
-function coverCanvasWithImg(elImg) {
-    gElCanvas.height = (elImg.naturalHeight / elImg.naturalWidth) * gElCanvas.width
-    gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
-}
-
-function resizeCanvas() {
-    const elContainer = document.querySelector('.canvas-container')
-    gElCanvas.width = elContainer.clientWidth - 2
+function addEvListeners() {
+    gElCanvas.addEventListener('click', onCanvasClick)
 }
 
 function drawText(line, idx) {
@@ -138,28 +137,11 @@ function onTextInput(txt) {
     renderMeme()
 }
 
-function downloadCanvas(elLink) {
-    const dataUrl = gElCanvas.toDataURL()
-
-    elLink.href = dataUrl
-    elLink.download = 'Meme'
-}
-
-function onColorChange(color) {
-    setLineColor(color)
-    renderMeme()
-}
-
-function onFontSize(diff) {
-    setFontSize(diff)
-    renderMeme()
-}
-
 function onAddLine(txt) {
     addLine(txt)
 
     const elTextInput = document.querySelector('.text-input')
-    elTextInput.value = gMeme.lines[gMeme.selectedLineIdx].txt
+    elTextInput.value = getSelectedLine().txt
     elTextInput.focus()
 
     renderMeme()
@@ -168,6 +150,33 @@ function onAddLine(txt) {
 function onSwitchLine() {
     switchLine()
     updateControlsToSelectedLine()
+    renderMeme()
+}
+
+function onDeleteLine() {
+    deleteLine()
+    renderMeme()
+}
+
+function onFontSize(diff) {
+    setFontSize(diff)
+    renderMeme()
+}
+
+function onChangeFont(font) {
+    setFont(font)
+    renderMeme()
+    updateControlsToSelectedLine()
+}
+
+function onAlignText(align) {
+    setAlignText(align)
+    renderMeme()
+    updateControlsToSelectedLine()
+}
+
+function onColorChange(color) {
+    setLineColor(color)
     renderMeme()
 }
 
@@ -195,8 +204,11 @@ function updateControlsToSelectedLine() {
 
 }
 
-function toggleMenu() {
-    document.body.classList.toggle('menu-open');
+function downloadCanvas(elLink) {
+    const dataUrl = gElCanvas.toDataURL()
+
+    elLink.href = dataUrl
+    elLink.download = 'Meme'
 }
 
 function onSaveMeme(event) {
@@ -216,7 +228,7 @@ function renderSavedMeme() {
         `<img src="${memeData.imgData}" 
          onclick="onEditMeme(${idx})"
          class="saved-meme-img">
-    `).join('')
+         `).join('')
 
     document.querySelector('.saved-memes-gallery').innerHTML = strHtmls
 }
@@ -241,19 +253,6 @@ function onEditMeme(idx) {
     updateControlsToSelectedLine()
 }
 
-function onDeleteLine() {
-    deleteLine()
-    renderMeme()
-}
-
-function onChangeFont(font) {
-    setFont(font)
-    renderMeme()
-    updateControlsToSelectedLine()
-}
-
-function onAlignText(align) {
-    setAlignText(align)
-    renderMeme()
-    updateControlsToSelectedLine()
+function toggleMenu() {
+    document.body.classList.toggle('menu-open');
 }
