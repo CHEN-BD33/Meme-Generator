@@ -49,7 +49,7 @@
         </section>
     </main>
 
-    <section class="editor-container flex align-center">
+    <section class="editor-container flex align-center hidden">
         <canvas height="400" width="400" class="editor-canvas"> </canvas>
         <section class="editor-toolbar flex align-center justify-center ">
             <input type="text" class="text-input" placeholder="Enter your text here..."
@@ -86,10 +86,10 @@
         </section>
     </section>
 
-    <section class="saved-memes-container saved-memes-layout">
+    <section class="saved-memes-container hidden">
         <button onclick="onDeleteSavedMemes()" class="delete-saved-meme-btn" title="Delete Saved Memes">
             <i class="fa-solid fa-trash fa-2xl"></i></button>
-        <div class="saved-memes-gallery"></div>
+        <div class="saved-memes-gallery saved-memes-layout"></div>
     </section>
 
     <footer class="main-footer">© 2024 Meme Generator - All Rights Reserved</footer>

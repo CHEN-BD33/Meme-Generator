@@ -11,11 +11,13 @@ body {
     font-size: 1rem;
     margin: 0;
 }
-/* 
-img{
-    width: 100%;
-} */
-
+ 
 footer {
     text-align: center;
+    margin-top: auto;
+    grid-row: 3;
+} 
+
+.hidden {
+    display: none;
 }
