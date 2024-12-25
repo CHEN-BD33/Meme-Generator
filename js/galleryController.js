@@ -1,6 +1,5 @@
 'use strict'
 
-
 function renderGallery() {
     const images = getImgs()
     const strHtmls = images.map(img => 
