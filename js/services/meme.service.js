@@ -12,8 +12,8 @@ var gMeme = {
             font: 'impact',
             color: '#FFFFFF',
             align: 'center',
-            x: 200,
-            y: 50,
+            x: 250,
+            y: 100,
             width: 0,
             height: 0
         },
