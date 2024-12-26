@@ -112,3 +112,11 @@ function deleteSavedMemes() {
     savedMemes.length = 0
     saveToStorage(STORAGE_KEY, savedMemes)
 }
+
+function getRandomMeme() {
+    const images = getImgs()
+    const texts = ['BOOM!', 'WOW', 'SO Funny', 'I like It']
+
+    setImg(images[getRandomInt(0, images.length - 1)].id)
+    setLineTxt(texts[getRandomInt(0, texts.length - 1)])
+}

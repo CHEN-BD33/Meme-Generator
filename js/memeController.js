@@ -258,6 +258,12 @@ function onEditMeme(idx) {
     updateControlsToSelectedLine()
 }
 
+function onRandomMeme() {
+    getRandomMeme()
+    renderSection('editor')
+    renderMeme()
+}
+
 function toggleMenu() {
     document.body.classList.toggle('menu-open');
 }
