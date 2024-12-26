@@ -1,8 +1,8 @@
 :root {
     /* pallete */
     --clr-primary-3: rgb(243, 243, 243);
-    --clr-primary-2: #afd9ac;
-    --clr-primary-1: #444;
-    --clr-primary: #105a02;
-    --clr-primary1: #242222;
+    --clr-primary-2: #ffffff;
+    --clr-primary-1: #5d5d5d;
+    --clr-primary: rgb(112, 136, 113);
+    --clr-primary1: #000000;
 }
