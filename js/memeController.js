@@ -109,6 +109,7 @@ function drawText(line, idx) {
     gCtx.lineWidth = 2
     gCtx.textAlign = align
     gCtx.textBaseline = 'middle'
+    gCtx.setLineDash([])
 
     var xPos = x
     if (align === 'left') xPos = 50
