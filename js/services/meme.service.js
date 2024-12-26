@@ -15,8 +15,9 @@ var gMeme = {
             x: 250,
             y: 100,
             width: 0,
-            height: 0
-        },
+            height: 0,
+            isDragged: false
+        }
     ]
 }
 // var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
@@ -51,7 +52,8 @@ function addLine(txt = 'Enter your text here...', size = 30, color = '#FFFFFF') 
         x: gElCanvas.width / 2,
         y,
         width: 0,
-        height: 0
+        height: 0,
+        isDragged: false
     })
     gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
@@ -119,4 +121,33 @@ function getRandomMeme() {
 
     setImg(images[getRandomInt(0, images.length - 1)].id)
     setLineTxt(texts[getRandomInt(0, texts.length - 1)])
+}
+
+function isLineClicked(clickedPos) {
+    const lineIdx = gMeme.lines.findIndex(line => {
+        const textMetrics = gCtx.measureText(line.txt)
+        const distance = Math.sqrt(
+            (line.x - clickedPos.x) ** 2 +
+            (line.y - clickedPos.y) ** 2
+        )
+        return distance <= textMetrics.width / 2
+    })
+    if (lineIdx !== -1) {
+        gMeme.selectedLineIdx = lineIdx
+        return true
+    }
+    return false
+}
+
+function setLineDrag(isDrag) {
+    const line = getSelectedLine()
+    if (!line) return
+    line.isDragged = isDrag
+}
+
+function moveLineByDrag(dx, dy) {
+    const line = getSelectedLine()
+    if (!line) return
+    line.x += dx
+    line.y += dy
 }
