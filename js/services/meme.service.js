@@ -102,9 +102,8 @@ function getSavedMemes() {
 }
 
 function deleteSavedMemes() {
-    const savedMemes = getSavedMemes()
-    savedMemes.length = 0
-    saveToStorage(STORAGE_KEY, savedMemes)
+    gSavedMemes = []
+    saveToStorage(STORAGE_KEY, gSavedMemes)
 }
 
 function getRandomMeme() {
