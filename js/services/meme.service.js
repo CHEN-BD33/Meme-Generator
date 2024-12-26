@@ -60,6 +60,11 @@ function switchLine() {
     gMeme.selectedLineIdx = (gMeme.selectedLineIdx + 1) % gMeme.lines.length
 }
 
+function moveLine(direction) {
+    const line = getSelectedLine()
+    line.y += (direction === 'up' ? -10 : 10)
+}
+
 function deleteLine() {
     if (!gMeme.lines.length) return
     const lineIdx = gMeme.selectedLineIdx

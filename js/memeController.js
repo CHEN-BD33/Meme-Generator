@@ -116,7 +116,7 @@ function drawText(line, idx) {
     line.width = metrics.width
     line.height = size
 
-    if (gShouldDrawStroke && idx === gMeme.selectedLineIdx) {
+    if (idx === gMeme.selectedLineIdx) {
         gCtx.strokeStyle = '#000000'
         gCtx.setLineDash([5, 5])
         var rectX = xPos
@@ -150,6 +150,11 @@ function onAddLine(txt) {
 function onSwitchLine() {
     switchLine()
     updateControlsToSelectedLine()
+    renderMeme()
+}
+
+function onMoveLine(direction) {
+    moveLine(direction)
     renderMeme()
 }
 

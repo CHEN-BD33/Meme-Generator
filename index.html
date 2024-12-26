@@ -61,6 +61,10 @@
                     <i class="fa-solid fa-plus"></i></button>
                 <button onclick="onSwitchLine()" class="switch-lines-btn" title="Switch line">
                     <i class="fa-solid fa-arrows-up-down"></i></button>
+                <button onclick="onMoveLine('up')" class="move-line-up-btn" title="Move line up">
+                    <i class="fa-solid fa-arrow-up"></i></button>
+                <button onclick="onMoveLine('down')" class="move-line-down-btn" title="Move line down">
+                    <i class="fa-solid fa-arrow-down"></i></button>
                 <button onclick="onDeleteLine()" class="delete-lines-btn" title="Delete line">
                     <i class="fa-solid fa-trash fa-2xl"></i></button>
             </div>
@@ -75,7 +79,7 @@
                     <i class="fa-solid fa-minus"></i>
                 </button>
                 <label>
-                    <select class="font-family-select" onchange="onChangeFont(this.value)"  title="Choose font">
+                    <select class="font-family-select" onchange="onChangeFont(this.value)" title="Choose font">
                         <option value="impact" selected>Impact</option>
                         <option value="cursive">Cursive</option>
                         <option value="monospace">Monospace</option>
