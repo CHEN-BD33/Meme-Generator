@@ -46,6 +46,7 @@ function resizeCanvas() {
 function initCanvas() {
     gElCanvas = document.querySelector('.editor-canvas')
     gCtx = gElCanvas.getContext('2d')
+    _createMeme()
     addListeners()
     window.addEventListener('resize', () => {
         resizeCanvas()

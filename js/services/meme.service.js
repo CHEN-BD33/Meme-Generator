@@ -2,24 +2,25 @@
 
 const STORAGE_KEY = "savedmemeDB"
 var gSavedMemes = loadFromStorage(STORAGE_KEY) || []
-var gMeme = {
-    selectedImgId: 1,
-    selectedLineIdx: 0,
-    lines: [
-        {
-            txt: 'Enter your text here...',
-            size: 30,
-            font: 'impact',
-            color: '#FFFFFF',
-            align: 'center',
-            x: 250,
-            y: 100,
-            width: 0,
-            height: 0,
-            isDragged: false
-        }
-    ]
-}
+var gMeme = {}
+// var gMeme = {
+//     selectedImgId: 1,
+//     selectedLineIdx: 0,
+//     lines: [
+//         {
+//             txt: 'Enter your text here...',
+//             size: 30,
+//             font: 'impact',
+//             color: '#FFFFFF',
+//             align: 'center',
+//             x: 250,
+//             y: 100,
+//             width: 0,
+//             height: 0,
+//             isDragged: false
+//         }
+//     ]
+// }
 // var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 function getMeme() {
@@ -43,18 +44,9 @@ function addLine(txt = 'Enter your text here...', size = 30, color = '#FFFFFF') 
         gMeme.lines.length === 1 ? gElCanvas.height - 50 :
             gElCanvas.height / 2
 
-    gMeme.lines.push({
-        txt,
-        size,
-        font: 'impact',
-        color,
-        align: 'center',
-        x: gElCanvas.width / 2,
-        y,
-        width: 0,
-        height: 0,
-        isDragged: false
-    })
+    const line = _createMemeLine(txt, size, color)
+    line.y = y
+    gMeme.lines.push(line)
     gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
 
@@ -150,4 +142,27 @@ function moveLineByDrag(dx, dy) {
     if (!line) return
     line.x += dx
     line.y += dy
+}
+
+function _createMeme() {
+    return gMeme = {
+        selectedImgId: 1,
+        selectedLineIdx: 0,
+        lines: [_createMemeLine()]
+    }
+}
+
+function _createMemeLine(txt = 'Enter your text here...', size = 30, color = '#FFFFFF', align = 'center') {
+    return {
+        txt,
+        size,
+        font: 'impact',
+        color,
+        align: 'center',
+        x: 250,
+        y: 100,
+        width: 0,
+        height: 0,
+        isDragged: false
+    }
 }
