@@ -320,19 +320,21 @@ function onUp() {
 }
 
 function getEvPos(ev) {
+
+    let pos = {
+        x: ev.offsetX,
+        y: ev.offsetY,
+    }
+
     if (TOUCH_EVS.includes(ev.type)) {
         ev.preventDefault()
         ev = ev.changedTouches[0]
-        const rect = gElCanvas.getBoundingClientRect()
-        return {
-            x: ev.clientX - rect.left,
-            y: ev.clientY - rect.top
+        pos = {
+            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
         }
     }
-    return {
-        x: ev.offsetX,
-        y: ev.offsetY
-    }
+    return pos
 }
 
 function toggleMenu() {
