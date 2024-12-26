@@ -1,5 +1,4 @@
 /* MOBILE ONLY  */
-
 @media (max-width: 920px) {
     .main-nav {
         position: fixed;
@@ -34,9 +33,7 @@
 }
 
 /* SMALL */
-@media (min-width: 680px) {
-
-}
+@media (min-width: 680px) {}
 
 /* MEDIUM */
 @media (min-width: 920px) {
