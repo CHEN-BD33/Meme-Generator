@@ -223,6 +223,8 @@ function downloadCanvas(elLink) {
 
 function onSaveMeme(event) {
     saveMeme()
+    renderSection('saved')
+    renderSavedMeme()
 }
 
 function onSaveNavClick() {
