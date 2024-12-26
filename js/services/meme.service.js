@@ -117,11 +117,15 @@ function getRandomMeme() {
 
 function isLineClicked(clickedPos) {
     const lineIdx = gMeme.lines.findIndex(line => {
-        const textMetrics = gCtx.measureText(line.txt)
+        let xPos = line.x
+        if (line.align === 'left') xPos = 50
+        if (line.align === 'right') xPos = gElCanvas.width - 50
+        
         const distance = Math.sqrt(
-            (line.x - clickedPos.x) ** 2 +
+            (xPos - clickedPos.x) ** 2 +
             (line.y - clickedPos.y) ** 2
         )
+        const textMetrics = gCtx.measureText(line.txt)
         return distance <= textMetrics.width / 2
     })
     if (lineIdx !== -1) {
@@ -129,7 +133,7 @@ function isLineClicked(clickedPos) {
         return true
     }
     return false
-}
+ }
 
 function setLineDrag(isDrag) {
     const line = getSelectedLine()
